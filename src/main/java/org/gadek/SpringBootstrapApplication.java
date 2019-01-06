@@ -20,7 +20,7 @@ public class SpringBootstrapApplication implements CommandLineRunner {
 	
 	@Autowired
 	MovieRepository movieRepository;
-	
+	//
    // private static final Logger log = LoggerFactory.getLogger(SpringBootstrapApplication.class);
 
 

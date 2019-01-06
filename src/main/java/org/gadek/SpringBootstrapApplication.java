@@ -28,7 +28,8 @@ public class SpringBootstrapApplication implements CommandLineRunner {
 
 		SpringApplication.run(SpringBootstrapApplication.class, args);
 	}	
-		//testing purpose	
+		//testing purpose
+		//new branch
 	@Override
 	public void run(String... arg0) throws Exception {
 		for(Movie product : movieRepository.findAll()) {

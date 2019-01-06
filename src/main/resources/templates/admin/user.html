@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:utext="${title}"></title>
+       <meta charset="UTF-8"/>
+    <title>User Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
+      <!-- See configuration in WebMvConfig.java -->
+     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+      <!--Custom styles-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <!-- Include _menu.html -->
+      <div class="container">
+      <th:block th:include="/_menu"></th:block>
+       
+      <h2>Admin Page</h2>
+      <h3>Welcome :
+         <span th:utext="${#request.userPrincipal.name}"></span>
+      </h3>
+       <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">User ID</th>
+      <th scope="col">User Name</th>
+      <th scope="col"> Encryted Password</th>
+      <th scope="col"> Enabled</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr th:each="accountInfo : ${accountInfos}">
+            <td th:utext="${accountInfo.userId}">..</td>
+            <td th:utext="${accountInfo.userName}">..</td>
+             <td th:utext="${accountInfo.encrytedPassword}">..</td>
+            <td th:utext="${accountInfo.enabled}">..</td>
+        </tr>
+  </tbody>
+</table>
+   
+   </div>
+   
+ 
+       
+      <br/><br/>
+       
+      <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+       
+  
+       <script th:src="@{/jquery/jquery.min.js}"></script>  
+      <script th:src="@{/popper/popper.min.js}"></script>  
+      <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>   
+   </body>
+    
+</html>

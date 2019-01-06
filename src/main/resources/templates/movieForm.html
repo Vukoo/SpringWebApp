@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:utext="${title}"></title>
+       <meta charset="UTF-8"/>
+    <title>User Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
+      <!-- See configuration in WebMvConfig.java -->
+     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+      <!--Custom styles-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <!-- Include _menu.html -->
+      <div class="container">
+      <th:block th:include="/_menu"></th:block>
+   	
+   	
+   	<h2>Add new movie </h2>
+		<br/>
+
+		<form class="form-horizontal" th:object="${movie}" th:action="@{/movie/save}" method="post">
+			<input type="hidden" th:field="*{movieID}" />
+			<div th:class="form-group" th:classappend="${#fields.hasErrors('title')}? 'has-error'">
+				<label class="col-sm-2 control-label">Title: <span class="required">*</span> </label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{title}" />
+					<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" th:class="help-block">Title Errors</span>
+				</div>
+			</div>
+			<div class="form-group" th:classappend="${#fields.hasErrors('year')}? 'has-error'">
+		    	<label class="col-sm-2 control-label">Year<span class="required">*</span> </label>
+		    	<div class="col-md-10">
+		    		<input type="text" class="form-control" th:field="*{year}" />
+		    		<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}" th:class="help-block">Year Errors</span>
+		    	</div>
+		  	</div>
+			<div class="form-group" th:classappend="${#fields.hasErrors('director')}? 'has-error'">
+				<label class="col-sm-2 control-label">Director <span class="required">*</span></label>
+				<div class="col-md-10">
+					<input type="datetime" class="form-control" th:field="*{director}" />
+					<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}" th:class="help-block">Director Errors</span>
+				</div>
+			</div>
+			<div class="form-group" th:classappend="${#fields.hasErrors('rating')}? 'has-error'">
+		    	<label class="col-sm-2 control-label">Rating <span class="required">*</span></label>
+		    	<div class="col-md-10">
+		    		<input type="text" class="form-control" th:field="*{rating}" />
+		    		<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}" th:class="help-block">Rating Errors</span>
+		    	</div>
+		  	</div>
+		  	  	
+			<button type="submit" class="btn btn-default">Submit</button>
+</form>
+   
+   		</div>
+       <script th:src="@{/jquery/jquery.min.js}"></script>  
+      <script th:src="@{/popper/popper.min.js}"></script>  
+      <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>   
+   </body>
+    
+</html>

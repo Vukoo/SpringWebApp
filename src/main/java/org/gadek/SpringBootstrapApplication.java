@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @SpringBootApplication
-public class SpringBootstrapApplication implements CommandLineRunner {
+public class SpringBootstrapApplication  {
 
 	
 	@Autowired
@@ -28,22 +28,7 @@ public class SpringBootstrapApplication implements CommandLineRunner {
 
 		SpringApplication.run(SpringBootstrapApplication.class, args);
 	}	
-		//testing purpose
-		//new branch
-	@Override
-	public void run(String... arg0) throws Exception {
-		for(Movie product : movieRepository.findAll()) {
-			System.out.println("Id: " + product.getMovieID());
-			System.out.println("Nazwa: " + product.getTitle());
-			System.out.println("Rok produkcji: " + product.getYear());
-			System.out.println("Reżyser: " + product.getDirector());
-			System.out.println("Ocena: " + product.getRating());
 
-			System.out.println("================================");
-			
-			
-		}
-	}
 	
 	
 	//Simple builder for quote handle
@@ -51,7 +36,9 @@ public class SpringBootstrapApplication implements CommandLineRunner {
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
-
+	
+	
+	//print quote on console
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {

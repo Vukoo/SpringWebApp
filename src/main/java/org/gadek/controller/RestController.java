@@ -1,6 +1,7 @@
 package org.gadek.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -32,6 +33,11 @@ public class RestController {
     public String movieInfo(Model model, Principal principal) {  
 		List<Movie> list = movieDAO.getMovie();
         model.addAttribute("movie", list);
+//        List<Movie> test = new ArrayList<>();
+//      //  model.addAttribute("test", test);
+//        List<Movie> tests = movieRepository.findAll();
+//        model.addAttribute("tests", tests);
+        
         return "movie";
     }
 	

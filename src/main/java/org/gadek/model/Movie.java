@@ -2,15 +2,21 @@ package org.gadek.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
-@Table
+@Table(name = "movie")
 public class Movie {
 	@Id
     @GeneratedValue
@@ -22,6 +28,8 @@ public class Movie {
 	
 	@NotNull
 	@Column 
+	@Min(1800)
+	@Max(2030)
 	private Long year;
 	@NotNull
 	@Column
@@ -32,10 +40,20 @@ public class Movie {
 	@Max(10)
 	private Long rating;
 	
-	public Movie() {
-		
-	}
 	
+	@NotNull
+	@Column(name = "language_id")
+	private Long language_id;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "language_id",referencedColumnName="id", nullable = false,insertable = false, updatable = false)
+	private Language language;
+	
+
+	public Movie() {
+			
+		}
+
 	public Movie(Long movieID, String title,Long year, String director, Long rating) {
 		this.movieID = movieID;
         this.title =title;

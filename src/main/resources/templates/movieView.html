@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:utext="${title}"></title>
+       <meta charset="UTF-8"/>
+    <title>User Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
+      <!-- See configuration in WebMvConfig.java -->
+     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+      <!--Custom styles-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <!-- Include _menu.html -->
+      <div class="container">
+      <th:block th:include="/_menu"></th:block>
+   	
+<form class="form-horizontal" th:object="${movie}">
+			<input type="hidden" th:field="*{movieID}" />
+			<div th:class="form-group">
+				<label class="col-sm-2 control-label">Title: </label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{title}" />
+				</div>
+			</div>
+			<div class="form-group">
+		    	<label class="col-sm-2 control-label">Year </label>
+		    	<div class="col-md-10">
+		    		<input type="text" class="form-control" th:field="*{year}" />
+		    	</div>
+		  	</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Director </label>
+				<div class="col-md-10">
+					<input type="datetime" class="form-control" th:field="*{director}" />
+				</div>
+			</div>
+			<div class="form-group">
+		    	<label class="col-sm-2 control-label">Rating </label>
+		    	<div class="col-md-10">
+		    		<input type="text" class="form-control" th:field="*{rating}" />
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="col-sm-2 control-label">Language </label>
+		    	<div class="col-md-10">
+		    		<input type="text" class="form-control" />
+		    	</div>
+		  	</div>
+		  			  	  	
+			<button  class="btn btn-default float-right">Add comment</button>
+			<a class="btn btn-default" th:href="@{/movie}">Back To Movie List</a>
+</form>
+		  	
+		  	
+		  	
+
+
+    		</div>
+       <script th:src="@{/jquery/jquery.min.js}"></script>  
+      <script th:src="@{/popper/popper.min.js}"></script>  
+      <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>   
+   </body>
+    
+</html>

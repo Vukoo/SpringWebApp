@@ -34,12 +34,14 @@ public class RestController {
 		List<Movie> list = movieDAO.getMovie();
         model.addAttribute("movie", list);
 //        List<Movie> test = new ArrayList<>();
-//      //  model.addAttribute("test", test);
+//        model.addAttribute("test", test);
 //        List<Movie> tests = movieRepository.findAll();
 //        model.addAttribute("tests", tests);
         
         return "movie";
     }
+    
+
 	
 	//DELETE 
 	@RequestMapping(value = "/movie/delete/{id}")
@@ -74,6 +76,12 @@ public class RestController {
 	public String editMovie(@PathVariable Long id, Model model){
 		model.addAttribute("movie", movieRepository.findById(id));
 		return "movieForm";
+	}
+	
+	@RequestMapping(value = "/movie/view/{id}")
+	public String viewMovie(@PathVariable Long id, Model model){
+		model.addAttribute("movie", movieRepository.findById(id));
+		return "movieView";
 	}
 	
 //private Logger logger = LoggerFactory.getLogger(RestController.class);

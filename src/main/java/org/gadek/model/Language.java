@@ -15,21 +15,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.context.annotation.Lazy;
+
 @Entity
 @Table(name = "language")
 public class Language {
+	@Lazy(true)
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @NotNull
-	@Column 
 	private String descriptions;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "language", orphanRemoval = true)
-    private Set<Movie> movie = new HashSet<>();
+    
+//    @Lazy(true)
+//    @OneToMany(cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY,
+//            mappedBy = "language", orphanRemoval = true)
+//    private Set<Movie> movie = new HashSet<>();
     
     
     public Long getId() {

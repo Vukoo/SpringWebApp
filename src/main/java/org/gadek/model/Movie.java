@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.context.annotation.Lazy;
 
 @Entity
 @Table(name = "movie")
@@ -23,31 +24,28 @@ public class Movie {
     @Column(nullable = false)
     private Long movieID;
 	@NotNull
-	@Column 
 	private String title;
 	
 	@NotNull
-	@Column 
 	@Min(1800)
 	@Max(2030)
 	private Long year;
 	@NotNull
-	@Column
 	private String director;
 	@NotNull
-	@Column
 	@Min(1)
 	@Max(10)
 	private Long rating;
 	
-	
-	@NotNull
-	@Column(name = "language_id")
+	@Lazy(true)
+	//@NotNull
 	private Long language_id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "language_id",referencedColumnName="id", nullable = false,insertable = false, updatable = false)
-	private Language language;
+
+//	@Lazy(true)
+//	@ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "language_id",referencedColumnName="id", nullable = false,insertable = false, updatable = false)
+//	private Language language;
 	
 
 	public Movie() {
@@ -60,6 +58,14 @@ public class Movie {
         this.year = year;
         this.director = director;
         this.rating = rating;
+	}
+	
+	public Long getLanguage_id() {
+		return language_id;
+	}
+
+	public void setLanguage_id(Long language_id) {
+		this.language_id = language_id;
 	}
 	
 	public Long getMovieID() {

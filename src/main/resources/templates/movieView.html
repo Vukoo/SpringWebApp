@@ -53,33 +53,7 @@
 			<button  class="btn btn-default float-right">Add comment</button>
 			<a class="btn btn-default" th:href="@{/movie}">Back To Movie List</a>
 </form>
-		 
-		 
-		 <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Comment date</th>
-      <th scope="col">User_id</th>
-      <th scope="col">body</th>
-
-    </tr>
-  </thead>
-  <tbody>
-   <tr th:each="comment : ${comment}">
-            <td th:utext="${comment.title}">..</td>
-            <td th:utext="${comment.commentDate}">..</td>
-            <td th:utext="${comment.userId}">..</td>
-            <td th:utext="${comment.body}">..</td>
-        </tr>
-        
-  </tbody>
-</table> 	
-
-<p th:text="${comment[0].title}"> tytulek</p>
-
-
-
+		
 
 <div class="row" >
                 <div class="col-md-8">

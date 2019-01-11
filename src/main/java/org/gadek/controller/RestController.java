@@ -3,11 +3,14 @@ package org.gadek.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.gadek.dao.MovieDAO;
+import org.gadek.model.Comment;
 import org.gadek.model.Movie;
+import org.gadek.repository.CommentRepository;
 import org.gadek.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,8 @@ public class RestController {
 	private MovieRepository movieRepository;
 	@Autowired
     private MovieDAO movieDAO;	
+	@Autowired
+    private CommentRepository commentRepository;	
 	
 	//LIST ALL MOVIE
     @GetMapping(value = "/movie")
@@ -81,6 +86,7 @@ public class RestController {
 	@RequestMapping(value = "/movie/view/{id}")
 	public String viewMovie(@PathVariable Long id, Model model){
 		model.addAttribute("movie", movieRepository.findById(id));
+		model.addAttribute("comment",commentRepository.findAll());
 		return "movieView";
 	}
 	

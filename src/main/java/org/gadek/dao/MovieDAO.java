@@ -16,14 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MovieDAO extends JdbcDaoSupport {
 	
-	
-	
 	 @Autowired
 	    public MovieDAO(DataSource dataSource) {
 	      this.setDataSource(dataSource);
 	    }
 	
-    
 	   public List<Movie> getMovie() {
 	    	String sql = MovieMapper.SELECT_SQL;
 	        Object[] params = new Object[] {};

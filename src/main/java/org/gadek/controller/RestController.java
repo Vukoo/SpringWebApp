@@ -13,6 +13,7 @@ import org.gadek.model.Movie;
 import org.gadek.repository.CommentRepository;
 import org.gadek.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,8 +22,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 
 @Controller
@@ -33,18 +32,14 @@ public class RestController {
 	@Autowired
     private MovieDAO movieDAO;	
 	@Autowired
-    private CommentRepository commentRepository;	
-	
+    private CommentRepository commentRepository;
+
+
 	//LIST ALL MOVIE
     @GetMapping(value = "/movie")
     public String movieInfo(Model model, Principal principal) {  
 		List<Movie> list = movieDAO.getMovie();
         model.addAttribute("movie", list);
-//        List<Movie> test = new ArrayList<>();
-//        model.addAttribute("test", test);
-//        List<Movie> tests = movieRepository.findAll();
-//        model.addAttribute("tests", tests);
-        
         return "movie";
     }
     	
@@ -83,11 +78,12 @@ public class RestController {
 		return "movieForm";
 	}
 	
-	//SHOW
+	//SHOW movie comment
 	@RequestMapping(value = "/movie/view/{id}")
 	public String viewMovie(@PathVariable Long id, Model model){
 		model.addAttribute("movie", movieRepository.findById(id));
 		model.addAttribute("comment",commentRepository.findByMovieId(id));
 		return "movieView";
 	}
+
 }

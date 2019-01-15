@@ -13,6 +13,7 @@ import org.gadek.mapper.AppUserMapper;
 import org.gadek.model.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,7 @@ public class AppUserDAO extends JdbcDaoSupport {
     @Autowired
     public AppUserDAO(DataSource dataSource) {
       this.setDataSource(dataSource);
+      
     }
  
     public AppUser findUserAccount(String userName) {
@@ -41,11 +43,21 @@ public class AppUserDAO extends JdbcDaoSupport {
     }
     
     public List<AppUser> getUsers() {
+    	try {
     	String sql = AppUserMapper.BASE_SQL;
         Object[] params = new Object[] {};
         AppUserMapper mapper = new AppUserMapper();
         List<AppUser> list = this.getJdbcTemplate().query(sql, params, mapper);
         return list;
+    	} catch (NoResultException e) {
+    		return null;
+    	}
     }
-
+    //to do fetch id from database 
+    public void addUser(String name, String password) {
+    	String query = "insert into app_user (user_id,user_name,encryted_password,enabled) values (?,?,?,FALSE)";
+    	Object[] inputs = new Object[] { 1111,name,password};
+    	getJdbcTemplate().update(query, inputs);
+    }
+    
 }

@@ -1,6 +1,7 @@
 package org.gadek.controller;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.security.Principal;
 import java.util.List;
@@ -11,6 +12,7 @@ import  org.gadek.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMethod;
  
@@ -19,6 +21,8 @@ public class MainController {
 	
 	@Autowired
     private AppUserDAO appUserDAO;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
@@ -69,6 +73,23 @@ public class MainController {
         return "/errors/403Page";
     }
     
+    @RequestMapping(value= "/signup", method = RequestMethod.GET)
+    public String signUp() {
+    	return "signup";
+    }
     
+    //create user
+    @RequestMapping(value = "/signup/create")
+	public String createMovie(Model model) {
+		model.addAttribute("user", new AppUser());
+	    return "signup";
+	}
+    
+    //save user
+    @RequestMapping(value= "/signup/save", method = RequestMethod.POST)
+    public String addUser(Model model, String name, String password) {
+    		appUserDAO.addUser(name, encoder.encode(password));
+    		return "loginPage";
+    }
  
 }

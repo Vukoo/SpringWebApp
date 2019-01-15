@@ -55,7 +55,7 @@
 </form>
 		
 
-<div class="row" >
+			<div class="row" >
                 <div class="col-md-8">
                   <div class="page-header">
                     <h1><small class="pull-right">Lots of comments</small> Comments </h1>
@@ -66,17 +66,13 @@
                             <a class="media-left" href="#">
                               <img src="http://lorempixel.com/40/40/people/1/">
                             </a>
-                            <div class="media-body">
-                                
+                            <div class="media-body"> 
                               <h4  class="media-heading user_name" th:utext="${comment.userId}" >User ID</h4>
                              <a th:utext="${comment.body}"> Comment body. </a>
-                              
                               <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
                             </div>
                           </div>
                    </div>
-                    
-                    
                     
                 </div>
             </div>

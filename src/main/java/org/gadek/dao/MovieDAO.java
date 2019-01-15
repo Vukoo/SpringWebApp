@@ -20,7 +20,6 @@ public class MovieDAO extends JdbcDaoSupport {
 	    public MovieDAO(DataSource dataSource) {
 	      this.setDataSource(dataSource);
 	    }
-	
 	   public List<Movie> getMovie() {
 	    	String sql = MovieMapper.SELECT_SQL;
 	        Object[] params = new Object[] {};

@@ -23,25 +23,14 @@ public class MainController {
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
         model.addAttribute("title", "All hope abandon ye who enter here");
-        
         return "welcomePage";
     }
  
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(Model model, Principal principal) {
-
-        // After user login successfully.
-        String userName = principal.getName();
- 
-        System.out.println("User Name: " + userName);
- 
-       // User loginedUser = (User) ((Authentication) principal).getPrincipal();
+    public String adminPage(Model model) {
         List<AppUser> list = appUserDAO.getUsers();
         model.addAttribute("accountInfos", list);
- 
         return "/admin/user";
-         
-      
     }
  
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -58,11 +47,6 @@ public class MainController {
  
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
-    	
-        // After user login successfully.
-        String userName = principal.getName();
-        System.out.println("User Name: " + userName);
-       // User loginedUser = (User) ((Authentication) principal).getPrincipal();
         List<AppUser> list = appUserDAO.getUsers();
         model.addAttribute("accountInfos", list);
         return "/user/user";
@@ -73,9 +57,8 @@ public class MainController {
  
         if (principal != null) {
             User loginedUser = (User) ((Authentication) principal).getPrincipal();
- 
             String userInfo = WebUtils.toString(loginedUser);
- 
+
             model.addAttribute("userInfo", userInfo);
  
             String message = "Hi " + principal.getName() //

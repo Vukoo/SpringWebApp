@@ -51,11 +51,11 @@
 		    		<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}" th:class="help-block">Rating Errors</span>
 		    	</div>
 		  	</div>
-		  	<div class="form-group" th:classappend="${#fields.hasErrors('language_id')}? 'has-error'">
+		  	<div class="form-group" th:classappend="${#fields.hasErrors('languageId')}? 'has-error'">
 		    	<label class="col-sm-2 control-label">Language <span class="required">*</span></label>
 		    	<div class="col-md-10">
-		    		<input type="text" class="form-control" th:field="*{language_id}" />
-		    		<span th:if="${#fields.hasErrors('language_id')}" th:errors="*{language_id}" th:class="help-block">Language Errors</span>
+		    		<input type="text" class="form-control" th:field="*{languageId}" />
+		    		<span th:if="${#fields.hasErrors('languageId')}" th:errors="*{languageId}" th:class="help-block">Language Errors</span>
 		    	</div>
 		  	</div>
 

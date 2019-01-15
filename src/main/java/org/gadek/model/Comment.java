@@ -2,10 +2,17 @@ package org.gadek.model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
@@ -18,6 +25,11 @@ public class Comment {
 	private String title;
 	private String body;
 	private String commentDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "movieId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	private Movie movie;
 	
 	
 	public Comment() {
@@ -63,6 +75,14 @@ public class Comment {
 	}
 	public void setCommentDate(String commentDate) {
 		this.commentDate = commentDate;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
 }

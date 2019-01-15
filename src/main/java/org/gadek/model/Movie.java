@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,9 +21,8 @@ import org.springframework.context.annotation.Lazy;
 @Table(name = "movie")
 public class Movie {
 	@Id
-    @GeneratedValue
-    @Column(nullable = false)
-    private Long movieID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long movieId;
 	@NotNull
 	private String title;
 	
@@ -38,41 +38,39 @@ public class Movie {
 	private Long rating;
 	
 	@Lazy(true)
-	//@NotNull
-	private Long language_id;
+
+	private Long languageId;
 	
 
 //	@Lazy(true)
 //	@ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "language_id",referencedColumnName="id", nullable = false,insertable = false, updatable = false)
+//    @JoinColumn(name = "languageId",referencedColumnName="id", nullable = false,insertable = false, updatable = false)
 //	private Language language;
 	
 
 	public Movie() {
-			
 		}
-
-	public Movie(Long movieID, String title,Long year, String director, Long rating) {
-		this.movieID = movieID;
+	public Movie(Long movieId, String title,Long year, String director, Long rating) {
+		this.movieId = movieId;
         this.title =title;
         this.year = year;
         this.director = director;
         this.rating = rating;
 	}
 	
-	public Long getLanguage_id() {
-		return language_id;
+	public Long getlanguageId() {
+		return languageId;
 	}
 
-	public void setLanguage_id(Long language_id) {
-		this.language_id = language_id;
+	public void setlanguageId(Long languageId) {
+		this.languageId = languageId;
 	}
 	
-	public Long getMovieID() {
-		return movieID;
+	public Long getMovieId() {
+		return movieId;
 	}
-	public void setMovieID(Long movieID) {
-		this.movieID = movieID;
+	public void setMovieID(Long movieId) {
+		this.movieId = movieId;
 	}
 	public String getTitle() {
 		return title;

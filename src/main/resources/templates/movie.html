@@ -27,21 +27,21 @@
     <tr>
       <th scope="col">Movie ID</th>
       <th scope="col">Title</th>
-      <th scope="col"> Year</th>
+      <th scope="col"> Rating</th>
       <th scope="col"> Director</th>
       <th scope="col"> Action</th>
     </tr>
   </thead>
   <tbody>
    <tr th:each="movie : ${movie}">
-            <td th:utext="${movie.movieID}">..</td>
+            <td th:utext="${movie.movieId}">..</td>
             <td th:utext="${movie.title}">..</td>
-            <td th:utext="${movie.year}">..</td>
+            <td th:utext="${movie.rating}">..</td>
             <td th:utext="${movie.director}">..</td>
             <td>
-           <a type="button" class="btn btn-danger"  th:href="@{/movie/delete/} + ${movie.movieID}">Delete</a>
-             <a type="button" class="btn btn-primary" th:href="@{/movie/edit/} + ${movie.movieID}">Edit</a>
-              <a type="button" class="btn btn-primary" th:href="@{/movie/view/} + ${movie.movieID}">Show</a>
+           <a type="button" class="btn btn-danger"  th:href="@{/movie/delete/} + ${movie.movieId}">Delete</a>
+             <a type="button" class="btn btn-primary" th:href="@{/movie/edit/} + ${movie.movieId}">Edit</a>
+              <a type="button" class="btn btn-primary" th:href="@{/movie/view/} + ${movie.movieId}">Show</a>
              </td>
         </tr>
         

@@ -20,20 +20,18 @@ import org.springframework.context.annotation.Lazy;
 @Entity
 @Table(name = "language")
 public class Language {
-	@Lazy(true)
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @NotNull
 	private String descriptions;
+ 
     
-//    @Lazy(true)
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY,
-//            mappedBy = "language", orphanRemoval = true)
-//    private Set<Movie> movie = new HashSet<>();
-    
+	public Language( String descriptions) {
+		super();
+		this.descriptions = descriptions;
+	}
     
     public Long getId() {
 		return id;
@@ -42,21 +40,10 @@ public class Language {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
-
-	public Language( @NotNull String descriptions) {
-		super();
-		this.descriptions = descriptions;
-	}
-
-
-
 	public String getDescriptions() {
 		return descriptions;
 	}
 	public void setDescriptions(String descriptions) {
 		this.descriptions = descriptions;
 	}
-
 }

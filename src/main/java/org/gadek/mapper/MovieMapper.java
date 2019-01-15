@@ -19,6 +19,6 @@ public class MovieMapper implements RowMapper<Movie> {
 	        String director = rs.getString("director");
 	        Long rating =  rs.getLong("rating");
 	        Long year = rs.getLong("year");
-	        return new Movie(movieID, title, rating, director, year);
+	        return new Movie(movieID, title, year,director,rating);
 	    }
 }

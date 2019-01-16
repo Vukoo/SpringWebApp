@@ -22,7 +22,7 @@
 		<br/>
 
 		<form class="form-horizontal" th:object="${movie}"  th:action="@{/movie/save}" method="post">
-			<input type="hidden" th:field="*{movieID}" />
+			<input type="hidden" th:field="*{movieId}" />
 			<div th:class="form-group" th:classappend="${#fields.hasErrors('title')}? 'has-error'">
 				<label class="col-sm-2 control-label">Title: <span class="required">*</span> </label>
 				<div class="col-md-10">

@@ -8,13 +8,13 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class MovieMapper implements RowMapper<Movie> {
 	
-	 public static final String SELECT_SQL = "Select u.movieid, u.title, u.year, u.director, rating From movie u ";
+	 public static final String SELECT_SQL = "Select u.movie_id, u.title, u.year, u.director, rating From movie u ";
 
 	 
 	 @Override
 	    public Movie mapRow(ResultSet rs, int rowNum) throws SQLException {
 	 
-	        Long movieID = rs.getLong("movieID");
+	        Long movieID = rs.getLong("movie_Id");
 	        String title = rs.getString("title");
 	        String director = rs.getString("director");
 	        Long rating =  rs.getLong("rating");

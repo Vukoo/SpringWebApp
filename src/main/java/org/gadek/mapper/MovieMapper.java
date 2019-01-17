@@ -14,11 +14,7 @@ public class MovieMapper implements RowMapper<Movie> {
 	 @Override
 	    public Movie mapRow(ResultSet rs, int rowNum) throws SQLException {
 	 
-<<<<<<< HEAD
 	        Long movieID = rs.getLong("movie_id");
-=======
-	        Long movieID = rs.getLong("movie_Id");
->>>>>>> branch 'test' of https://github.com/Vukoo/SpringWebApp.git
 	        String title = rs.getString("title");
 	        String director = rs.getString("director");
 	        Long rating =  rs.getLong("rating");

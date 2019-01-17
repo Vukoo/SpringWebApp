@@ -86,9 +86,9 @@ public class MainController {
 	}
     
     //save user
-    @RequestMapping(value= "/signup/save", method = RequestMethod.POST)
+    @RequestMapping(value= "/signup/save", method = RequestMethod.GET)
     public String addUser(Model model, String name, String password) {
-    		appUserDAO.addUser(name, encoder.encode(password));
+    		appUserDAO.addUser("Paweł", encoder.encode("123"));
     		return "loginPage";
     }
  

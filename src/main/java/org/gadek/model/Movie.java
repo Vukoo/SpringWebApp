@@ -69,7 +69,7 @@ public class Movie {
 	public Long getMovieId() {
 		return movieId;
 	}
-	public void setMovieID(Long movieId) {
+	public void setMovieId(Long movieId) {
 		this.movieId = movieId;
 	}
 	public String getTitle() {

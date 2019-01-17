@@ -18,7 +18,7 @@
       <th:block th:include="/_menu"></th:block>
    	
 <form class="form-horizontal" th:object="${movie}">
-			<input type="hidden" th:field="*{movieID}" />
+			<input type="hidden" th:field="*{movieId}" />
 			<div th:class="form-group">
 				<label class="col-sm-2 control-label">Title: </label>
 				<div class="col-md-10">
@@ -46,7 +46,7 @@
 		  	<div class="form-group">
 		    	<label class="col-sm-2 control-label">Language </label>
 		    	<div class="col-md-10">
-		    		<input type="text" class="form-control" th:field="*{language_id}" />
+		    		<input type="text" class="form-control" th:field="*{languageId}" />
 		    	</div>
 		  	</div>
 		  			  	  	

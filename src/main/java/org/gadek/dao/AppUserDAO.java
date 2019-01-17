@@ -55,8 +55,8 @@ public class AppUserDAO extends JdbcDaoSupport {
     }
     //to do fetch id from database 
     public void addUser(String name, String password) {
-    	String query = "insert into app_user (user_id,user_name,encryted_password,enabled) values (?,?,?,FALSE)";
-    	Object[] inputs = new Object[] { 1111,name,password};
+    	String query = "insert into app_user (user_name,encryted_password,enabled) values (?,?,FALSE)";
+    	Object[] inputs = new Object[] {name,password};
     	getJdbcTemplate().update(query, inputs);
     }
     

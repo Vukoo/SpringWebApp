@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 public class AppUserMapper implements RowMapper<AppUser> {
  
     public static final String BASE_SQL = "Select u.User_Id, u.User_Name, u.Encryted_Password, u.enabled From App_User u ";
- 
     @Override
     public AppUser mapRow(ResultSet rs, int rowNum) throws SQLException {
  

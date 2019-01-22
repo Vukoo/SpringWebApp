@@ -17,5 +17,6 @@ public class MovieServiceImp implements MovieService {
 	    public List<Movie> findAllUser() {
 	        return (List<Movie>) movieRepository.findAll();
 	    }
+	 
 	
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
 import org.gadek.dao.MovieDAO;
@@ -34,6 +36,9 @@ public class RestController {
 	private MovieDAO movieDAO;
 	@Autowired
 	private CommentRepository commentRepository;
+	
+	@PersistenceContext
+	EntityManager entityManager;
 	
 	Logger logger = LoggerFactory.getLogger(RestController.class);
 
@@ -88,13 +93,41 @@ public class RestController {
 	}
 	
 	// save comment
-	@RequestMapping(value = "/movie/view/{id}/{body}", method = RequestMethod.GET)
-	public String addComment(Model model, @PathVariable String body, @PathVariable Long id) {
+//	@RequestMapping(value = "/movie/view/{id}/{body}", method = RequestMethod.GET)
+//	public String addComment(Model model, @PathVariable String body, @PathVariable Long id) {
+//		String title= "Tytuł";
+//		logger.info("Pokaz id " + id);
+//		logger.info("Pokaz body " + body);
+//		//commentRepository.save(entity);
+//		return "welcomePage";
+//	}
+	
+	@RequestMapping(value = "/movie/view/{movieId}/{body}", method = RequestMethod.POST)
+	public String addComment(Model model, @PathVariable String body, @PathVariable Long movieId) {
 		String title= "Tytuł";
-		logger.info("Pokaz id " + id);
+		logger.info("Pokaz id " + movieId);
 		logger.info("Pokaz body " + body);
-		//commentRepository.save(entity);
-		return "welcomePage";
+		
+		Comment comm = new Comment() ;
+		
+		Optional<Movie> mov = movieRepository.findById(movieId);
+		
+		if(mov.isPresent())
+		{
+			Movie movies = mov.get();
+			comm.setBody(body);
+			comm.setTitle(title);
+			comm.setUserId(1L);
+			comm.setCommentDate("2006-02-02");
+			comm.setMovie(movies);
+			commentRepository.save(comm);
+		}
+
+			
+//		lastmovie.getMovieId();
+	//	Comment add = new Comment ( movies, movieId, "Tytuł", body,"2006-02-02");
+		
+		return "redirect:/movie";
 	}
 
 }

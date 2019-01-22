@@ -6,20 +6,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.gadek.repository.MovieRepository;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "comment")
 public class Comment {
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long commentId;
 	private Long userId;
 	private String title;
@@ -36,9 +38,9 @@ public class Comment {
 		
 	}
 	
-	public Comment(Long commentIid, Long userId, String title, String body, String commentDate) {
+	public Comment(Movie movie, Long userId, String title, String body, String commentDate) {
 		super();
-		this.commentId = commentIid;
+		this.movie = movie;
 		this.userId = userId;
 		this.title = title;
 		this.body = body;

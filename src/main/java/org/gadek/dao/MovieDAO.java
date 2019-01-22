@@ -27,5 +27,5 @@ public class MovieDAO extends JdbcDaoSupport {
 	        List<Movie> list = this.getJdbcTemplate().query(sql, params, mapper);
 	        return list;
 	    }
-	
+
 }

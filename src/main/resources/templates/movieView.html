@@ -62,7 +62,7 @@
 <div class="row">
 <div class="col-md-12">
 
-<form method="POST"  id="commentform">
+<form method="POST"  id="commentform"  >
 
 <div id="comment-name" class="form-row">
 <input type = "text"  placeholder = "Subject" name = "dname"  id = "name" >
@@ -70,8 +70,10 @@
 <div id="comment-message" class="form-row">
 <textarea name = "body" placeholder = "What do you think about movie?" id = "comment" ></textarea>
 </div>
-<a th:href="@{/movie/view/} + *{movieId}"><input type="submit" name="dsubmit" id="commentSubmit" value="Submit Comment" ></a>
+<a  th:href="@{/movie/view/{path}(path=${movieId})}"><input type="submit" name="dsubmit" id="commentSubmit" value="Submit Comment" ></a>
 </form>
+
+<a th:text="${new.title}" > </a>
 
 </div>
 </div>

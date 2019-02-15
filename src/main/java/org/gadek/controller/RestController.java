@@ -89,6 +89,7 @@ public class RestController {
 	public String viewMovie(@PathVariable Long id, Model model) {
 		model.addAttribute("movie", movieRepository.findById(id));
 		model.addAttribute("comment", commentRepository.findByMovieId(id));
+		model.addAttribute("new",movieRepository.findById(id));
 		return "movieView";
 	}
 	
@@ -124,9 +125,6 @@ public class RestController {
 		}
 
 			
-//		lastmovie.getMovieId();
-	//	Comment add = new Comment ( movies, movieId, "Tytuł", body,"2006-02-02");
-		
 		return "redirect:/movie";
 	}
 

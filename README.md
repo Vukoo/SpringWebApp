@@ -1,10 +1,10 @@
 # SpringWebApp
 Technology Stack:
--Spring Boot
--Hibernate
--Thymelefe
--bootstrap
--maven
+- Spring Boot
+- Hibernate
+- Thymelefe
+- bootstrap
+- maven
 
 
 
